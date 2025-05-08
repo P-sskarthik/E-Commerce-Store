@@ -2,17 +2,19 @@ import { useState, useEffect } from "react";
 import "./App.css";
 import { Products } from "./Context/Products";
 import NavBar from "./Context/NavBar";
-import { CartProvider } from "./Context/CartContext";
-
+import { useDispatch,useSelector } from "react-redux";
 function App() {
   const [products, setProducts] = useState([]);
   const [isLoaded, setIsLoaded] = useState(false);
+  const dispatch=useDispatch()
+
 
   async function fetchProducts() {
     try {
       setIsLoaded(false);
       const repo = await fetch("https://fakestoreapi.com/products");
       const data = await repo.json();
+      console.log(data)
       setProducts(data);
       setIsLoaded(true);
     } catch (error) {
@@ -26,7 +28,7 @@ function App() {
   }, []);
 
   return (
-    <CartProvider>
+
       <div className="flex flex-col min-h-screen  bg-gray-100">
         <NavBar />
         {isLoaded ? (
@@ -35,7 +37,7 @@ function App() {
           <p className="text-center text-lg p-4">Loading...</p>
         )}
       </div>
-    </CartProvider>
+    
   );
 }
 
