@@ -2,6 +2,7 @@ import { useState, useEffect } from "react";
 import "./App.css";
 import { Products } from "./Context/Products";
 import NavBar from "./Context/NavBar";
+import Accordion from "./components/Accordion";
 import { useDispatch,useSelector } from "react-redux";
 function App() {
   const [products, setProducts] = useState([]);
@@ -29,14 +30,18 @@ function App() {
 
   return (
 
-      <div className="flex flex-col min-h-screen  bg-gray-100">
-        <NavBar />
-        {isLoaded ? (
-          products.map((prod) => <Products key={prod.id} item={prod} />)
-        ) : (
-          <p className="text-center text-lg p-4">Loading...</p>
-        )}
-      </div>
+      // <div className="flex flex-col min-h-screen  bg-gray-100">
+  
+      //   {isLoaded ? (
+      //     products.map((prod) => <Products key={prod.id} item={prod} />)
+      //   ) : (
+      //     <p className="text-center text-lg p-4">Loading...</p>
+      //   )}
+      // </div>
+      
+      <>
+<Accordion/>
+      </>
     
   );
 }

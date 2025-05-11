@@ -20,6 +20,7 @@ add: (state,action)=>{
 },
 remove: (state,{payload})=>{
    state.items= state.items.filter((item) => item.id !== payload.id)
+   state.quantity= state.items.length
    state.total -=payload.price
 
 },
